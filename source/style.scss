@@ -1,0 +1,119 @@
+@use "./config/reset.scss";
+@use "./config/variaveis.scss";
+
+
+@mixin ElementoContainer {
+    max-width: 1024px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+
+body {
+    background-color: variaveis.$corCinza;
+}
+
+header {
+    background-color: variaveis.$corAzulEcuro;
+
+
+    .container {
+        @include ElementoContainer ();
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1em 0;
+
+    }
+
+    .menu {
+        display: flex;
+
+        li {
+            font-weight: bold;
+            margin-left: 1.5em;
+            list-style: none;
+
+            a {
+                color: variaveis.$corBranco;
+                text-decoration: none;
+            }
+        }
+    }
+}
+
+section {
+    .container {
+        @include ElementoContainer ();
+
+        h2 {
+            margin: 3em 0;
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(3, 32.66%);
+            column-gap: 1%;
+            row-gap: 4%;
+            width: 100%;
+
+            .product-item {
+                list-style: none;
+
+                img {
+                    width: 100%;
+                    border-radius: 1em;
+                }
+
+                .product-button {
+                    display: block;
+                    background-color: variaveis.$corVerde;
+                    color: variaveis.$corBranco;
+                    text-align: center;
+                    text-decoration: none;
+                    padding: 0.5em 0;
+                    margin-top: 0.5em;
+                    margin-bottom: 2em;
+                    border-radius: 0.5em;
+
+                    &:hover {
+                        background-color: lighten(variaveis.$corVerde, 10%);
+                    }
+                }
+            }
+        }
+
+    }
+
+}
+
+
+@media screen and (max-width: variaveis.$tablete){
+    header{
+        .container{
+            padding: 0 5em;
+        }
+    }
+
+    section{
+        .container{
+            padding: 0 5em;
+
+            .products{
+                grid-template-columns: repeat(2, 48.5%);
+                column-gap: 3%;
+            }
+        }
+    }
+}
+
+
+@media screen and (max-width: variaveis.$mobile){
+    section{
+        .container{
+            .products{
+                display: block;
+            }
+        }
+    }
+}
